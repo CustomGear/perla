@@ -1,0 +1,56 @@
+PERLA DESJARDINS — PAGE TEMPLATES & IMAGES
+==========================================
+
+This folder contains ready-to-load content for each WordPress page.
+Use it with the Perla Desjardins (Elementor) theme.
+
+TWO FORMATS
+-----------
+  .json  = Elementor native format. Use "Import Template" in Elementor.
+  .html  = Raw content. Paste into an Elementor HTML widget if JSON import fails.
+
+FOLDER STRUCTURE
+----------------
+  page-templates/     <- You are here.
+    home.json, about.json, gallery.json, ...   (Elementor import)
+    home.html, about.html, gallery.html, ...   (paste into HTML widget)
+  ../assets/images/   <- Theme images (hm.svg, moxies.svg, dandurand.svg, dji.svg).
+                        Add hero-portrait.png here if you have it.
+
+HOW TO LOAD — OPTION A: Elementor Import (recommended for most pages)
+-----------------------------------------------------------------------
+1. In WordPress, open the page (e.g. Home) and click "Edit with Elementor".
+2. Click the folder icon (or the + to add section) and open the "Import Template" tab.
+3. Click "Choose File" and select the matching .json file (e.g. home.json).
+4. Click "Import Now". The template will be inserted into the page.
+5. If your theme images path is different: click the inserted block (the HTML widget),
+   and in the HTML code find {{IMAGES}} and replace with:
+   /wp-content/themes/perla-elementor-theme/assets/images
+6. Click Update.
+7. Note: for the *Home* hero placeholder + *Work with me* contact wiring to match the static site exactly,
+   use Option B (.html) for those two pages.
+
+HOW TO LOAD — OPTION B: Paste HTML
+-----------------------------------
+1. In WordPress, open the page and click "Edit with Elementor".
+2. Add a section (+), then drag an "HTML" widget into it.
+3. Open the matching .html file in a text editor, copy all, paste into the HTML widget.
+4. Find & replace {{IMAGES}} with /wp-content/themes/perla-elementor-theme/assets/images
+5. Click Update.
+
+PAGE -> FILE MAPPING
+--------------------
+  Home           ->  home.json / home.html
+  About          ->  about.json / about.html
+  Gallery        ->  gallery.json / gallery.html
+  Services       ->  services.json / services.html
+  Work with me   ->  work-with-me.json / work-with-me.html
+  Privacy Policy ->  privacy-policy.json / privacy-policy.html
+  FAQ            ->  faq.json / faq.html
+
+WORK WITH ME PAGE
+-----------------
+Replace YOUR_FORMSPREE_ID in the form action with your Formspree form ID,
+or replace the form with a WordPress contact form plugin after importing.
+For exact behavior (contact links + Formspree placeholder fallback), paste `work-with-me.html`
+instead of importing `work-with-me.json`.

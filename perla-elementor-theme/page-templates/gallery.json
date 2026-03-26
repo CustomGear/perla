@@ -1,0 +1,26 @@
+{
+  "title": "Perla Gallery",
+  "type": "page",
+  "version": "0.4",
+  "page_settings": [],
+  "content": [
+    {
+      "id": "6af611eb",
+      "elType": "container",
+      "isInner": false,
+      "settings": {},
+      "elements": [
+        {
+          "id": "6a637978",
+          "elType": "widget",
+          "widgetType": "html",
+          "isInner": false,
+          "settings": {
+            "html": "<section class=\"page-hero\">\n  <div class=\"container\">\n    <p class=\"page-hero__label\"><span class=\"deco-star\" aria-hidden=\"true\">\u2726</span> Work</p>\n    <h1>Gallery</h1>\n    <p>A selection of my work \u2014 reels and posts from Instagram.</p>\n    <div class=\"callout-wrap\">\n      <p class=\"callout\"><span class=\"deco-star\" aria-hidden=\"true\">\u2726</span> Open for collabs</p>\n      <a href=\"/work-with-me/\" class=\"btn\">Work with me</a>\n    </div>\n  </div>\n</section>\n\n<section>\n  <div class=\"container\">\n    <p class=\"gallery-intro\">\n      Each tile below is your Instagram feed in one place. Add embed codes from your favourite posts or reels (Post \u2192 \u22ef \u2192 Embed on Instagram) and they'll appear here. Views stay on Instagram.\n    </p>\n\n    <div class=\"instagram-feed\" id=\"instagram-feed\">\n      <div class=\"instagram-embed\">\n        <blockquote class=\"instagram-media\" data-instgrm-permalink=\"https://www.instagram.com/p/DU6WLLxgZxz/\" data-instgrm-version=\"14\"></blockquote>\n      </div>\n      <div class=\"instagram-embed\">\n        <blockquote class=\"instagram-media\" data-instgrm-permalink=\"https://www.instagram.com/reel/DU7DmbEjINW/\" data-instgrm-version=\"14\"></blockquote>\n      </div>\n      <div class=\"instagram-embed\">\n        <blockquote class=\"instagram-media\" data-instgrm-permalink=\"https://www.instagram.com/reel/DUZm21vDJ5u/\" data-instgrm-version=\"14\"></blockquote>\n      </div>\n      <div class=\"instagram-embed\">\n        <blockquote class=\"instagram-media\" data-instgrm-permalink=\"https://www.instagram.com/reel/DULX5hFjsfD/\" data-instgrm-version=\"14\"></blockquote>\n      </div>\n      <div class=\"instagram-embed\">\n        <div class=\"instagram-embed-placeholder\">\n          Add embed from Instagram<br>\n          <span>Post \u2192 \u22ef \u2192 Embed</span>\n        </div>\n      </div>\n      <div class=\"instagram-embed\">\n        <div class=\"instagram-embed-placeholder\">\n          Add embed from Instagram<br>\n          <span>Post \u2192 \u22ef \u2192 Embed</span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"gallery-cta\">\n      <p>More reels and posts on my profile \u2014 watching there counts toward my reach.</p>\n      <a href=\"https://www.instagram.com/perla.desjardins/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn btn--filled\">View full feed on Instagram</a>\n    </div>\n  </div>\n</section>\n"
+          },
+          "elements": []
+        }
+      ]
+    }
+  ]
+}
