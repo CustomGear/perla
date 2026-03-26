@@ -168,6 +168,9 @@
 
           var locVal = document.querySelector('[data-contact="location"] [data-contact-value]');
           if (locVal && w.location) locVal.textContent = w.location;
+
+          setText('.work-contact-card__name', w.name);
+          setText('.work-contact-card__tagline', w.tagline);
         }
 
         // Gallery

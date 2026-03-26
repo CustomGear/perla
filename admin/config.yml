@@ -69,6 +69,8 @@ collections:
             name: "workWithMe"
             widget: "object"
             fields:
+              - { label: "Profile name", name: "name", widget: "string" }
+              - { label: "Profile tagline", name: "tagline", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
