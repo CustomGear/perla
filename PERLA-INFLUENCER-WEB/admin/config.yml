@@ -1,0 +1,83 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    files:
+      - name: "content"
+        label: "Content"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Brand / SEO Title", name: "title", widget: "string" }
+          - { label: "Instagram Username", name: "instagramUsername", widget: "string" }
+
+          - label: "Home"
+            name: "home"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Name (line 1)", name: "nameLine1", widget: "string" }
+              - { label: "Name (line 2)", name: "nameLine2", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Callout", name: "callout", widget: "string" }
+              - { label: "Hero Portrait Image", name: "heroPortrait", widget: "image", required: false }
+              - label: "Reels (4 tiles)"
+                name: "reels"
+                widget: "list"
+                min: 4
+                max: 4
+                summary: "{{fields.type}}"
+                fields:
+                  - label: "Type"
+                    name: "type"
+                    widget: "select"
+                    options: ["instagram", "video"]
+                  - { label: "Instagram Reel/Post URL", name: "instagramUrl", widget: "string", required: false }
+                  - { label: "Video File", name: "videoUrl", widget: "file", required: false }
+                  - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Intro", name: "intro", widget: "markdown" }
+
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Work With Me"
+            name: "workWithMe"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
+              - { label: "Instagram Handle", name: "instagramHandle", widget: "string" }
+
+          - label: "Gallery"
+            name: "gallery"
+            widget: "object"
+            fields:
+              - label: "Instagram URLs (1 per item)"
+                name: "instagramUrls"
+                widget: "list"
+                fields:
+                  - { label: "URL", name: "url", widget: "string" }
+

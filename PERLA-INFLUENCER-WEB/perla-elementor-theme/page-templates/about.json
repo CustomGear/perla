@@ -1,0 +1,26 @@
+{
+  "title": "Perla About",
+  "type": "page",
+  "version": "0.4",
+  "page_settings": [],
+  "content": [
+    {
+      "id": "6af611eb",
+      "elType": "container",
+      "isInner": false,
+      "settings": {},
+      "elements": [
+        {
+          "id": "6a637978",
+          "elType": "widget",
+          "widgetType": "html",
+          "isInner": false,
+          "settings": {
+            "html": "<section class=\"page-hero\">\n  <div class=\"container\">\n    <p class=\"page-hero__label\"><span class=\"deco-star\" aria-hidden=\"true\">\u2726</span> About</p>\n    <h1>About me</h1>\n    <p>A short intro about who I am and what I do.</p>\n    <div class=\"callout-wrap\">\n      <p class=\"callout\"><span class=\"deco-star\" aria-hidden=\"true\">\u2726</span> Available for collaborations</p>\n      <a href=\"/work-with-me/\" class=\"btn\">Get in touch</a>\n    </div>\n  </div>\n</section>\n\n<section>\n  <div class=\"container content-block\">\n    <p>Hi, I'm Perla \u2014 a UGC creator focused on beauty, fashion, and lifestyle. I work with brands to create authentic, scroll-stopping content that feels real and relatable.</p>\n    <p>I love bringing products and stories to life in a way that fits your brand voice and connects with your audience. Whether it's unboxings, tutorials, or day-in-my-life moments, I'm here to help you stand out.</p>\n    <p>When I'm not creating content, you'll find me [add a line or two about interests \u2014 e.g. exploring new spots, trying new skincare, or chasing good light].</p>\n    <p>Want to work together? Head to <a href=\"/work-with-me/\">Work with me</a> and say hi.</p>\n  </div>\n</section>\n"
+          },
+          "elements": []
+        }
+      ]
+    }
+  ]
+}

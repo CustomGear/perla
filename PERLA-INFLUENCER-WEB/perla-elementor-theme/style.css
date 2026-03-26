@@ -1,0 +1,22 @@
+/*
+Theme Name: Perla Desjardins (Elementor)
+Theme URI: https://perladesjardins.com
+Author: Perla Desjardins
+Description: Minimal theme for Perla Desjardins UGC Creator portfolio. Built to work with Elementor — same look as the static site (beige, cream, Cormorant Garamond + Outfit). Use Elementor to build Home, About, Gallery, Services, Work with me, and legal pages.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: perla-elementor
+*/
+
+/* Base styles are in assets/css/style.css and assets/css/pages.css */
+
+/* Match WordPress menu active state to static .active */
+.nav-list .current-menu-item > a {
+  font-weight: 500;
+  color: var(--text, #1F1F1F);
+}
+
+body.elementor-page .site-main {
+  padding-top: 0;
+}
