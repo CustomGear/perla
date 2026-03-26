@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+# Login screen branding (replaces default Decap logo). Bump ?v= when the file changes so caches refresh.
+logo_url: "/images/cms-logo.svg?v=2"
+
 media_folder: "uploads"
 public_folder: "/uploads"
 
