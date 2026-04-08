@@ -822,6 +822,37 @@
   display: block;
 }
 
+/* Mute toggle button — top right corner */
+.reel-card__mute-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 3;
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.45);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0;
+  transition: background var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reel-card__mute-btn:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.reel-card__mute-btn svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
 /* Gradient overlay at bottom */
 .reel-card__overlay {
   position: absolute;

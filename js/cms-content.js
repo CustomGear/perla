@@ -89,7 +89,7 @@
     });
 
     carousel.innerHTML = html;
-    attachVideoHover(carousel);
+    attachVideoControls(carousel);
     if (hasInstagram) scheduleInstagramEmbeds();
   }
 
@@ -114,6 +114,9 @@
     });
   }
 
+  var ICON_MUTED = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+  var ICON_UNMUTED = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+
   function buildCardHtml(item) {
     var igUrl = item.instagram ? escapeAttr(item.instagram) : '';
     var videoSrc = item.video ? escapeAttr(item.video) : '';
@@ -129,9 +132,12 @@
       html += '</div>';
     } else if (videoSrc) {
       html += '<div class="reel-card">';
-      html += '<video muted playsinline preload="metadata" loop tabindex="-1">';
+      // autoplay muted + playsinline = silent preview on load (works on iOS/Android)
+      html += '<video autoplay muted playsinline loop preload="auto" tabindex="-1">';
       html += '<source src="' + videoSrc + '" type="video/mp4">';
       html += '</video>';
+      // Mute toggle button — top-right corner
+      html += '<button class="reel-card__mute-btn" aria-label="Unmute video">' + ICON_MUTED + '</button>';
       html += '<div class="reel-card__overlay">';
       if (brand) html += '<span class="reel-card__brand">' + brand + '</span>';
       if (caption) html += '<span class="reel-card__caption">' + caption + '</span>';
@@ -141,16 +147,30 @@
     return html;
   }
 
-  function attachVideoHover(container) {
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+  function attachVideoControls(container) {
     container.querySelectorAll('.reel-card:not(.reel-card--instagram)').forEach(function (card) {
       var video = card.querySelector('video');
-      if (!video) return;
-      card.addEventListener('mouseenter', function () { video.play().catch(function () {}); });
-      card.addEventListener('mouseleave', function () { video.pause(); video.currentTime = 0; });
+      var muteBtn = card.querySelector('.reel-card__mute-btn');
+      if (!video || !muteBtn) return;
+
+      function updateMuteBtn() {
+        muteBtn.innerHTML = video.muted ? ICON_MUTED : ICON_UNMUTED;
+        muteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
+      }
+
+      muteBtn.addEventListener('click', function (e) {
+        e.stopPropagation(); // don't bubble to card
+        video.muted = !video.muted;
+        // Resuming with audio requires a fresh play() call after unmuting
+        if (!video.muted && video.paused) video.play().catch(function () {});
+        updateMuteBtn();
+      });
+
+      // Tapping the card itself also toggles mute (mobile-friendly)
       card.addEventListener('click', function () {
-        if (video.paused) { video.play().catch(function () {}); } else { video.pause(); }
+        video.muted = !video.muted;
+        if (!video.muted && video.paused) video.play().catch(function () {});
+        updateMuteBtn();
       });
     });
   }
@@ -168,7 +188,7 @@
     });
 
     grid.innerHTML = html;
-    attachVideoHover(grid);
+    attachVideoControls(grid);
     if (hasInstagram) scheduleInstagramEmbeds();
   }
 
