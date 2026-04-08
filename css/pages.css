@@ -1535,6 +1535,26 @@
   font-size: 0.65rem;
 }
 
+.work-form__field--hidden {
+  display: none;
+}
+
+.work-form__status {
+  margin-top: var(--space-sm);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.work-form__status--success {
+  color: #5a7a5a;
+}
+
+.work-form__status--error {
+  color: #8b3a3a;
+}
+
 .work-form__hint {
   margin-top: var(--space-sm);
   font-size: 0.75rem;

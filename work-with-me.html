@@ -47,8 +47,11 @@
         <div class="work-form-card">
           <h2 id="work-form-title" data-cms="work-form-title">Send a message</h2>
           <p class="work-form-card__note" data-cms="work-form-note">Include your brand, timeline, or budget — the more context, the better I can help.</p>
-          <form class="work-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="contact-form">
-            <input type="hidden" name="_subject" value="New inquiry from Perla's portfolio">
+          <form class="work-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form" novalidate>
+            <input type="hidden" name="form-name" value="contact">
+            <p class="work-form__field work-form__field--hidden" aria-hidden="true">
+              <label>Don't fill this out: <input name="bot-field"></label>
+            </p>
             <div class="work-form__field">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
@@ -66,6 +69,7 @@
               <textarea id="message" name="message" placeholder="Tell me about your project, goals, timeline — or just say hello!" required rows="5"></textarea>
             </div>
             <button type="submit" class="btn btn--filled work-form__submit">Send message</button>
+            <p class="work-form__status" id="form-status" aria-live="polite"></p>
           </form>
           <p class="work-form__hint" data-cms="work-form-hint">I read every message personally and reply within 24–48 hours.</p>
         </div>
@@ -147,16 +151,57 @@
   <script src="js/main.js"></script>
   <script src="js/cms-content.js"></script>
   <script>
-    // Form submit: if Formspree ID is placeholder, redirect to mailto
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      var action = this.getAttribute('action') || '';
-      if (action.indexOf('YOUR_FORMSPREE_ID') !== -1) {
+    (function () {
+      var form = document.getElementById('contact-form');
+      var status = document.getElementById('form-status');
+      var submitBtn = form ? form.querySelector('[type="submit"]') : null;
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var emailEl = document.querySelector('#contact-email [data-contact-value]');
-        var email = emailEl ? emailEl.textContent : 'collabs@perladesjardins.com';
-        window.location.href = 'mailto:' + email + '?subject=Collaboration%20inquiry';
+
+        // Basic client-side validation
+        var name = form.querySelector('[name="name"]').value.trim();
+        var email = form.querySelector('[name="email"]').value.trim();
+        var message = form.querySelector('[name="message"]').value.trim();
+        if (!name || !email || !message) {
+          showStatus('Please fill in your name, email and message.', 'error');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        showStatus('', '');
+
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        })
+          .then(function (res) {
+            if (res.ok) {
+              showStatus('Message sent — I\'ll be in touch within 24–48 hours. ✦', 'success');
+              form.reset();
+            } else {
+              throw new Error('Network response was not ok');
+            }
+          })
+          .catch(function () {
+            showStatus('Something went wrong. Email me directly at collabs@perladesjardins.com', 'error');
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send message';
+          });
+      });
+
+      function showStatus(msg, type) {
+        if (!status) return;
+        status.textContent = msg;
+        status.className = 'work-form__status' + (type ? ' work-form__status--' + type : '');
       }
-    });
+    })();
   </script>
 </body>
 </html>
