@@ -1167,7 +1167,48 @@
   margin-bottom: var(--space-lg) !important;
 }
 
-/* ---------- Gallery — Instagram embed feed ---------- */
+/* ---------- Gallery ---------- */
+.gallery-section {
+  padding: var(--space-xl) 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: var(--space-md);
+}
+
+/* Reel cards inside the grid don't scroll — override carousel flex sizing */
+.gallery-grid .reel-card {
+  flex: none;
+  width: 100%;
+}
+
+.gallery-grid .reel-card--instagram {
+  flex: none;
+  width: 100%;
+  min-height: 480px;
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .gallery-grid .reel-card--instagram {
+    min-height: 380px;
+  }
+}
+
+/* ---------- Gallery — Instagram embed feed (legacy, kept for reference) ---------- */
 .gallery-intro {
   text-align: center;
   max-width: 380px;

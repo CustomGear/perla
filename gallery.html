@@ -42,41 +42,14 @@
       </div>
     </section>
 
-    <section>
+    <section class="gallery-section">
       <div class="container">
-        <p class="gallery-intro" data-cms="gallery-intro">
-          Each tile below is your Instagram feed in one place. Add embed codes from your favourite posts or reels (Post → ⋯ → Embed on Instagram) and they’ll appear here. Views stay on Instagram.
-        </p>
-
-        <div class="instagram-feed" id="instagram-feed">
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU6WLLxgZxz/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DU7DmbEjINW/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUZm21vDJ5u/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="instagram-embed">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DULX5hFjsfD/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="instagram-embed">
-            <div class="instagram-embed-placeholder">
-              Add embed from Instagram<br>
-              <span>Post → ⋯ → Embed</span>
-            </div>
-          </div>
-          <div class="instagram-embed">
-            <div class="instagram-embed-placeholder">
-              Add embed from Instagram<br>
-              <span>Post → ⋯ → Embed</span>
-            </div>
-          </div>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Hydrated from content/gallery.json by cms-content.js -->
         </div>
 
         <div class="gallery-cta">
-          <p>More reels and posts on my profile — watching there counts toward my reach.</p>
+          <p>More on my Instagram profile.</p>
           <a href="https://www.instagram.com/perla.desjardins/" target="_blank" rel="noopener noreferrer" class="btn btn--filled">View full feed on Instagram</a>
         </div>
       </div>
@@ -118,8 +91,7 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="js/netlify-identity.js"></script>
   <script src="js/main.js"></script>
-  <!-- Instagram script before CMS so embeds can initialize after JSON inject -->
-  <script async src="//www.instagram.com/embed.js"></script>
   <script src="js/cms-content.js"></script>
+  <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>

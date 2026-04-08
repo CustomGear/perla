@@ -198,3 +198,22 @@ collections:
               - { label: "Video file (MP4 — leave blank if using Instagram URL)", name: "video", widget: "string", required: false, hint: "e.g. videos/reel-1.mp4" }
               - { label: "Brand name (MP4 cards only)", name: "brand", widget: "string", required: false }
               - { label: "Caption (MP4 cards only)", name: "caption", widget: "string", required: false }
+
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - name: "gallery"
+        label: "Gallery Items"
+        file: "content/gallery.json"
+        format: "json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            label_singular: "Item"
+            summary: "{{fields.instagram}}{{fields.video}}"
+            fields:
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false, hint: "e.g. https://www.instagram.com/reel/ABC123/" }
+              - { label: "Video file (MP4)", name: "video", widget: "string", required: false, hint: "e.g. videos/my-reel.mp4" }
+              - { label: "Brand name (MP4 only)", name: "brand", widget: "string", required: false }
+              - { label: "Caption (MP4 only)", name: "caption", widget: "string", required: false }
