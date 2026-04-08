@@ -448,7 +448,8 @@
 
 /* ---------- Hero editorial polish ---------- */
 .hero__title {
-  letter-spacing: 0.1em;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  letter-spacing: 0.08em;
   line-height: 1;
 }
 
