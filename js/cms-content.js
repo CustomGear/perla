@@ -125,8 +125,7 @@
       html += '<div class="reel-card reel-card--instagram">';
       html += '<blockquote class="instagram-media"'
         + ' data-instgrm-permalink="' + igUrl + '"'
-        + ' data-instgrm-version="14"'
-        + ' data-instgrm-captioned></blockquote>';
+        + ' data-instgrm-version="14"></blockquote>';
       html += '</div>';
     } else if (videoSrc) {
       html += '<div class="reel-card">';
