@@ -1,6 +1,29 @@
 {
   "title": "Perla Desjardins | UGC Creator Portfolio",
+  "brandName": "Perla Desjardins",
   "instagramUsername": "perla.desjardins",
+  "seo": {
+    "home": {
+      "title": "Perla Desjardins | UGC Creator Portfolio",
+      "description": "Perla Desjardins — UGC Creator Portfolio. Beauty, Fashion & Lifestyle content for brands."
+    },
+    "about": {
+      "title": "About | Perla Desjardins",
+      "description": "About Perla Desjardins — UGC Creator. Beauty, Fashion & Lifestyle."
+    },
+    "services": {
+      "title": "Services | Perla Desjardins",
+      "description": "UGC services — Perla Desjardins. What I offer to brands."
+    },
+    "gallery": {
+      "title": "Gallery | Perla Desjardins",
+      "description": "Gallery — Perla Desjardins. UGC content and reels from Instagram."
+    },
+    "workWithMe": {
+      "title": "Work with me | Perla Desjardins",
+      "description": "Work with Perla — UGC Creator. Collabs, rates, inquiries."
+    }
+  },
   "home": {
     "kicker": "UGC Creator",
     "nameLine1": "Perla",
@@ -9,6 +32,18 @@
     "tagline": "Authentic content for brands that want to stand out.",
     "callout": "Available for collaborations",
     "heroPortrait": "",
+    "brandsLabel": "Select collaborations",
+    "blurb": {
+      "label": "About",
+      "title": "A bit about me",
+      "text": "I'm Perla — a UGC creator focused on beauty, fashion, and lifestyle. I work with brands to create authentic, scroll-stopping content that feels real and relatable. I love bringing products and stories to life in a way that fits your brand voice and connects with your audience.",
+      "callout": "Available for collaborations"
+    },
+    "reelsSection": {
+      "label": "Work",
+      "title": "Reels",
+      "description": "Swipe to explore recent brand collaborations."
+    },
     "reels": [
       {
         "type": "instagram",
@@ -37,9 +72,21 @@
     ]
   },
   "about": {
+    "hero": {
+      "label": "About",
+      "title": "About me",
+      "subtitle": "A short intro about who I am and what I do.",
+      "callout": "Available for collaborations"
+    },
     "intro": "Hi, I'm Perla — a UGC creator focused on beauty, fashion, and lifestyle.\n\nI work with brands to create authentic, scroll-stopping content that feels real and relatable."
   },
   "services": {
+    "hero": {
+      "label": "Services",
+      "title": "Services",
+      "subtitle": "What I offer to brands as a UGC creator.",
+      "callout": "Available for collaborations"
+    },
     "cards": [
       {
         "title": "Reels & short-form video",
@@ -65,9 +112,29 @@
     "email": "collabs@perladesjardins.com",
     "location": "Ottawa, ON",
     "instagramUrl": "https://www.instagram.com/perla.desjardins/",
-    "instagramHandle": "@perla.desjardins"
+    "instagramHandle": "@perla.desjardins",
+    "hero": {
+      "label": "Collaborations & inquiries",
+      "title": "Work with me",
+      "intro": "Ready to create scroll-stopping content? Share your brand, campaign idea, or budget — I reply within 24–48 hours.",
+      "callout": "Available for collaborations",
+      "responseBadge": "24–48h response time"
+    },
+    "form": {
+      "title": "Send a message",
+      "note": "Include your brand, timeline, or budget — the more context, the better I can help.",
+      "hint": "I read every message personally and reply within 24–48 hours."
+    },
+    "contactIntro": "Reach out directly — I'm here for collabs, rates, and creative partnerships."
   },
   "gallery": {
+    "hero": {
+      "label": "Work",
+      "title": "Gallery",
+      "subtitle": "A selection of my work — reels and posts from Instagram.",
+      "callout": "Open for collabs"
+    },
+    "intro": "Each tile below is your Instagram feed in one place. Add embed codes from your favourite posts or reels (Post → ⋯ → Embed on Instagram) and they’ll appear here. Views stay on Instagram.",
     "instagramUrls": [
       { "url": "https://www.instagram.com/p/DU6WLLxgZxz/" },
       { "url": "https://www.instagram.com/reel/DU7DmbEjINW/" },
@@ -76,4 +143,3 @@
     ]
   }
 }
-

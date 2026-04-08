@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Uploads (managed outside git — add via Netlify CMS or manually)
+uploads/
+
+# Local dev
+*.log
+*.env
+.env.*
+
+# Zip archives (already in repo, don't re-add)
+*.zip
+
+# Editor
+.vscode/
+.idea/
+
+# The WordPress/Elementor theme folder — static site only needs html/css/js
+perla-elementor-theme/
+perla-elementor-theme 2.zip
+perla-elementor-theme-USE.zip
+perla-elementor-theme.zip
+perLA-INFLUENCER-W/

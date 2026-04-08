@@ -446,6 +446,23 @@
   color: var(--text);
 }
 
+/* ---------- Hero editorial polish ---------- */
+.hero__title {
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.hero__left {
+  padding-top: calc(var(--header-height) + var(--space-2xl));
+  padding-bottom: var(--space-2xl);
+}
+
+.hero__tagline {
+  font-size: 1rem;
+  max-width: 300px;
+  margin-bottom: var(--space-xl);
+}
+
 /* ---------- Brands carousel (home) ---------- */
 .home-brands {
   padding: var(--space-lg) 0 var(--space-lg);
@@ -482,7 +499,14 @@
 .home-brands__marquee {
   overflow: hidden;
   width: 100%;
-  max-width: 520px;
+  /* Edge fade */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .home-brands__track {
@@ -490,8 +514,19 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
+  width: max-content;
+  animation: marqueeScroll 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-brands__track {
+    animation: none;
+    justify-content: center;
+    width: auto;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
 }
 
 .home-brands__logo {
@@ -535,9 +570,8 @@
   }
 
   .home-brands__track {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: var(--space-md);
+    gap: var(--space-lg);
+    /* Keep animated; reduced-motion override above handles the wrap case */
   }
 
   .home-brands__logo {
@@ -737,6 +771,133 @@
 
 .featured-work__more a:hover {
   color: var(--text);
+}
+
+/* ---------- Reel carousel — 9:16 phone-frame cards ---------- */
+.reel-carousel {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: var(--space-sm) var(--space-md) var(--space-lg);
+  /* Bleed past container edges for proper snap feel */
+  margin: 0 calc(-1 * var(--space-md));
+}
+
+.reel-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.reel-card {
+  position: relative;
+  flex: 0 0 calc(33.33% - 1rem);
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--beige);
+  scroll-snap-align: start;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  border: 1px solid rgba(181, 168, 152, 0.18);
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+
+.reel-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.14), 0 4px 16px rgba(0, 0, 0, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  border-color: rgba(181, 168, 152, 0.35);
+}
+
+.reel-card video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient overlay at bottom */
+.reel-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem var(--space-sm) var(--space-sm);
+  background: linear-gradient(to top, rgba(15, 12, 9, 0.72) 0%, rgba(15, 12, 9, 0.3) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  pointer-events: none;
+}
+
+.reel-card__brand {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  display: block;
+}
+
+.reel-card__caption {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.25;
+  display: block;
+  letter-spacing: 0.02em;
+}
+
+/* Placeholder state (no video yet) */
+.reel-card--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.reel-card__placeholder-inner {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  padding: var(--space-sm);
+}
+
+.reel-card__placeholder-inner::before {
+  content: "▶";
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.3;
+}
+
+/* Mobile: one reel full-width, swipe to navigate */
+@media (max-width: 768px) {
+  .reel-card {
+    flex: 0 0 80vw;
+    max-width: 300px;
+  }
+
+  .reel-carousel {
+    scroll-padding-left: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .reel-card {
+    flex: 0 0 88vw;
+    max-width: 280px;
+  }
 }
 
 /* Reels section subtitle — cleaner typography */

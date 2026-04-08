@@ -2,13 +2,12 @@ backend:
   name: git-gateway
   branch: main
 
-# Login screen branding (replaces default Decap logo). Bump ?v= when the file changes so caches refresh.
 logo_url: "/images/cms-logo.svg?v=2"
 
 media_folder: "uploads"
 public_folder: "/uploads"
 
-publish_mode: editorial_workflow
+publish_mode: simple
 
 collections:
   - name: "site"
@@ -19,8 +18,45 @@ collections:
         file: "content/site.json"
         format: "json"
         fields:
-          - { label: "Brand / SEO Title", name: "title", widget: "string" }
-          - { label: "Instagram Username", name: "instagramUsername", widget: "string" }
+          - { label: "Site title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header logo text", name: "brandName", widget: "string" }
+          - { label: "Instagram @username (reference)", name: "instagramUsername", widget: "string", required: false }
+
+          - label: "SEO (titles & Google snippets)"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Home"
+                name: "home"
+                widget: "object"
+                fields:
+                  - { label: "Page title", name: "title", widget: "string" }
+                  - { label: "Meta description", name: "description", widget: "text" }
+              - label: "About"
+                name: "about"
+                widget: "object"
+                fields:
+                  - { label: "Page title", name: "title", widget: "string" }
+                  - { label: "Meta description", name: "description", widget: "text" }
+              - label: "Services"
+                name: "services"
+                widget: "object"
+                fields:
+                  - { label: "Page title", name: "title", widget: "string" }
+                  - { label: "Meta description", name: "description", widget: "text" }
+              - label: "Gallery"
+                name: "gallery"
+                widget: "object"
+                fields:
+                  - { label: "Page title", name: "title", widget: "string" }
+                  - { label: "Meta description", name: "description", widget: "text" }
+              - label: "Work with me"
+                name: "workWithMe"
+                widget: "object"
+                fields:
+                  - { label: "Page title", name: "title", widget: "string" }
+                  - { label: "Meta description", name: "description", widget: "text" }
 
           - label: "Home"
             name: "home"
@@ -29,10 +65,26 @@ collections:
               - { label: "Kicker", name: "kicker", widget: "string" }
               - { label: "Name (line 1)", name: "nameLine1", widget: "string" }
               - { label: "Name (line 2)", name: "nameLine2", widget: "string" }
-              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Role (under name)", name: "role", widget: "string" }
               - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "Callout", name: "callout", widget: "string" }
-              - { label: "Hero Portrait Image", name: "heroPortrait", widget: "image", required: false }
+              - { label: "Hero callout (next to ✦)", name: "callout", widget: "string" }
+              - { label: "Hero portrait image", name: "heroPortrait", widget: "image", required: false }
+              - { label: "Brands strip label", name: "brandsLabel", widget: "string" }
+              - label: "Home “About” blurb"
+                name: "blurb"
+                widget: "object"
+                fields:
+                  - { label: "Small label", name: "label", widget: "string" }
+                  - { label: "Heading", name: "title", widget: "string" }
+                  - { label: "Paragraph", name: "text", widget: "text" }
+                  - { label: "Callout line", name: "callout", widget: "string" }
+              - label: "Reels section"
+                name: "reelsSection"
+                widget: "object"
+                fields:
+                  - { label: "Small label", name: "label", widget: "string" }
+                  - { label: "Heading", name: "title", widget: "string" }
+                  - { label: "Description (HTML ok for links)", name: "description", widget: "text" }
               - label: "Reels (4 tiles)"
                 name: "reels"
                 widget: "list"
@@ -45,27 +97,43 @@ collections:
                     widget: "select"
                     options: ["instagram", "video"]
                   - { label: "Instagram Reel/Post URL", name: "instagramUrl", widget: "string", required: false }
-                  - { label: "Video File", name: "videoUrl", widget: "file", required: false }
-                  - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+                  - { label: "Video file", name: "videoUrl", widget: "file", required: false }
+                  - { label: "Cover image", name: "coverImage", widget: "image", required: false }
 
-          - label: "About"
+          - label: "About page"
             name: "about"
             widget: "object"
             fields:
-              - { label: "Intro", name: "intro", widget: "markdown" }
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Label (next to ✦)", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Callout", name: "callout", widget: "string" }
+              - { label: "Body (markdown: **bold**, blank line = new paragraph)", name: "intro", widget: "markdown" }
 
-          - label: "Services"
+          - label: "Services page"
             name: "services"
             widget: "object"
             fields:
-              - label: "Cards"
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Callout", name: "callout", widget: "string" }
+              - label: "Service cards"
                 name: "cards"
                 widget: "list"
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
 
-          - label: "Work With Me"
+          - label: "Work with me page"
             name: "workWithMe"
             widget: "object"
             fields:
@@ -74,15 +142,58 @@ collections:
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Instagram URL", name: "instagramUrl", widget: "string" }
-              - { label: "Instagram Handle", name: "instagramHandle", widget: "string" }
+              - { label: "Instagram handle", name: "instagramHandle", widget: "string" }
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Intro", name: "intro", widget: "text" }
+                  - { label: "Callout", name: "callout", widget: "string" }
+                  - { label: "Badge (e.g. response time)", name: "responseBadge", widget: "string" }
+              - label: "Contact form"
+                name: "form"
+                widget: "object"
+                fields:
+                  - { label: "Form title", name: "title", widget: "string" }
+                  - { label: "Note under title", name: "note", widget: "text" }
+                  - { label: "Hint under button", name: "hint", widget: "text" }
+              - { label: "Intro beside contact card", name: "contactIntro", widget: "text" }
 
-          - label: "Gallery"
+          - label: "Gallery page"
             name: "gallery"
             widget: "object"
             fields:
-              - label: "Instagram URLs (1 per item)"
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "subtitle", widget: "string" }
+                  - { label: "Callout", name: "callout", widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - label: "Instagram embed URLs"
                 name: "instagramUrls"
                 widget: "list"
                 fields:
                   - { label: "URL", name: "url", widget: "string" }
 
+  - name: "reels"
+    label: "Reels"
+    files:
+      - name: "reels"
+        label: "Reel Cards"
+        file: "content/reels.json"
+        format: "json"
+        fields:
+          - label: "Reels"
+            name: "reels"
+            widget: "list"
+            label_singular: "Reel"
+            summary: "{{fields.brand}} — {{fields.caption}}"
+            fields:
+              - { label: "Video file (MP4 from /videos/)", name: "video", widget: "string", hint: "e.g. videos/reel-1.mp4" }
+              - { label: "Brand name", name: "brand", widget: "string" }
+              - { label: "Caption", name: "caption", widget: "string" }

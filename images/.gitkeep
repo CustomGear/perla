@@ -1,0 +1,7 @@
+# Add your assets here
+# - hero-portrait.jpg  (homepage hero image — save a local copy; the site currently uses an Instagram URL that may expire)
+# - gallery/  (gallery photos)
+# - thumbs/   (optional video thumbnails)
+#
+# To save the current profile photo: open the site, right-click the hero image → Save image as → hero-portrait.jpg here.
+# Then in index.html change the hero <img src="..."> to src="images/hero-portrait.jpg".

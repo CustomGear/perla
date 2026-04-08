@@ -14,7 +14,7 @@
 <body class="page-work-with-me">
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">Perla Desjardins</a>
+      <a href="index.html" class="logo" data-cms="brand-name">Perla Desjardins</a>
       <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
       <nav>
         <ul class="nav-list">
@@ -32,12 +32,12 @@
   <main>
     <section class="work-hero">
       <div class="container">
-        <p class="work-hero__label"><span class="deco-star" aria-hidden="true">✦</span> Collaborations & inquiries</p>
-        <h1>Work with me</h1>
-        <p class="work-hero__intro">Ready to create scroll-stopping content? Share your brand, campaign idea, or budget — I reply within 24–48 hours.</p>
+        <p class="work-hero__label"><span class="deco-star" aria-hidden="true">✦</span> <span data-cms="work-hero-label">Collaborations & inquiries</span></p>
+        <h1 data-cms="work-hero-title">Work with me</h1>
+        <p class="work-hero__intro" data-cms="work-hero-intro">Ready to create scroll-stopping content? Share your brand, campaign idea, or budget — I reply within 24–48 hours.</p>
         <div class="work-hero__badges">
-          <p class="callout"><span class="deco-star" aria-hidden="true">✦</span> Available for collaborations</p>
-          <p class="work-hero__badge">24–48h response time</p>
+          <p class="callout"><span class="deco-star" aria-hidden="true">✦</span> <span data-cms="work-hero-callout">Available for collaborations</span></p>
+          <p class="work-hero__badge" data-cms="work-hero-badge">24–48h response time</p>
         </div>
       </div>
     </section>
@@ -45,8 +45,8 @@
     <section class="work-section" aria-labelledby="work-form-title">
       <div class="container work-container">
         <div class="work-form-card">
-          <h2 id="work-form-title">Send a message</h2>
-          <p class="work-form-card__note">Include your brand, timeline, or budget — the more context, the better I can help.</p>
+          <h2 id="work-form-title" data-cms="work-form-title">Send a message</h2>
+          <p class="work-form-card__note" data-cms="work-form-note">Include your brand, timeline, or budget — the more context, the better I can help.</p>
           <form class="work-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="contact-form">
             <input type="hidden" name="_subject" value="New inquiry from Perla's portfolio">
             <div class="work-form__field">
@@ -67,7 +67,7 @@
             </div>
             <button type="submit" class="btn btn--filled work-form__submit">Send message</button>
           </form>
-          <p class="work-form__hint">I read every message personally and reply within 24–48 hours.</p>
+          <p class="work-form__hint" data-cms="work-form-hint">I read every message personally and reply within 24–48 hours.</p>
         </div>
 
         <div class="work-contact-card">
@@ -78,7 +78,7 @@
               <p class="work-contact-card__tagline">UGC Creator · Beauty · Fashion · Lifestyle</p>
             </div>
           </div>
-          <p class="work-contact-card__intro">Reach out directly — I'm here for collabs, rates, and creative partnerships.</p>
+          <p class="work-contact-card__intro" data-cms="work-contact-intro">Reach out directly — I'm here for collabs, rates, and creative partnerships.</p>
           <div class="work-contact-list">
             <a href="#" class="work-contact-item" id="contact-email" data-contact="email">
               <span class="work-contact-item__icon" aria-hidden="true">✉</span>

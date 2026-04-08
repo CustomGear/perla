@@ -14,7 +14,7 @@
 <body class="page-gallery">
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">Perla Desjardins</a>
+      <a href="index.html" class="logo" data-cms="brand-name">Perla Desjardins</a>
       <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
       <nav>
         <ul class="nav-list">
@@ -32,11 +32,11 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <p class="page-hero__label"><span class="deco-star" aria-hidden="true">✦</span> Work</p>
-        <h1>Gallery</h1>
-        <p>A selection of my work — reels and posts from Instagram.</p>
+        <p class="page-hero__label"><span class="deco-star" aria-hidden="true">✦</span> <span data-cms="gallery-hero-label">Work</span></p>
+        <h1 data-cms="gallery-hero-title">Gallery</h1>
+        <p data-cms="gallery-hero-subtitle">A selection of my work — reels and posts from Instagram.</p>
         <div class="callout-wrap">
-          <p class="callout"><span class="deco-star" aria-hidden="true">✦</span> Open for collabs</p>
+          <p class="callout"><span class="deco-star" aria-hidden="true">✦</span> <span data-cms="gallery-hero-callout">Open for collabs</span></p>
           <a href="work-with-me.html" class="btn">Work with me</a>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
     <section>
       <div class="container">
-        <p class="gallery-intro">
+        <p class="gallery-intro" data-cms="gallery-intro">
           Each tile below is your Instagram feed in one place. Add embed codes from your favourite posts or reels (Post → ⋯ → Embed on Instagram) and they’ll appear here. Views stay on Instagram.
         </p>
 
@@ -118,8 +118,8 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="js/netlify-identity.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/cms-content.js"></script>
-  <!-- Load once when you add real Instagram embeds -->
+  <!-- Instagram script before CMS so embeds can initialize after JSON inject -->
   <script async src="//www.instagram.com/embed.js"></script>
+  <script src="js/cms-content.js"></script>
 </body>
 </html>
