@@ -174,10 +174,16 @@
         submitBtn.textContent = 'Sending…';
         showStatus('', '');
 
-        fetch('/', {
+        var formData = new FormData(form);
+        var encoded = [];
+        formData.forEach(function (val, key) {
+          encoded.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
+        });
+
+        fetch(window.location.pathname, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
+          body: encoded.join('&')
         })
           .then(function (res) {
             if (res.ok) {
