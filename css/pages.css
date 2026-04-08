@@ -857,6 +857,24 @@
   letter-spacing: 0.02em;
 }
 
+/* Instagram embed card — overrides 9:16 ratio, lets Instagram control height */
+.reel-card--instagram {
+  aspect-ratio: unset;
+  flex: 0 0 min(400px, 88vw);
+  min-height: 500px;
+  background: #fff;
+  display: flex;
+  align-items: stretch;
+}
+
+.reel-card--instagram .instagram-media {
+  margin: 0 !important;
+  min-width: unset !important;
+  width: 100% !important;
+  flex: 1;
+  border-radius: 0 !important;
+}
+
 /* Placeholder state (no video yet) */
 .reel-card--placeholder {
   display: flex;

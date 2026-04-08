@@ -83,32 +83,52 @@
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var html = '';
 
+    var hasInstagram = false;
+
     reels.forEach(function (reel) {
       if (!reel) return;
+      var igUrl = reel.instagram ? escapeAttr(reel.instagram) : '';
       var videoSrc = reel.video ? escapeAttr(reel.video) : '';
       var brand = reel.brand ? escapeAttr(reel.brand) : '';
       var caption = reel.caption ? escapeAttr(reel.caption) : '';
 
+      if (igUrl) {
+        // Instagram embed card — uses Instagram's own player
+        hasInstagram = true;
+        html += '<div class="reel-card reel-card--instagram">';
+        html += '<blockquote class="instagram-media"'
+          + ' data-instgrm-permalink="' + igUrl + '"'
+          + ' data-instgrm-version="14"'
+          + ' data-instgrm-captioned></blockquote>';
+        html += '</div>';
+        return;
+      }
+
+      // MP4 video card
       html += '<div class="reel-card">';
       if (videoSrc) {
         html += '<video muted playsinline preload="metadata" loop tabindex="-1">';
         html += '<source src="' + videoSrc + '" type="video/mp4">';
         html += '</video>';
+        html += '<div class="reel-card__overlay">';
+        if (brand) html += '<span class="reel-card__brand">' + brand + '</span>';
+        if (caption) html += '<span class="reel-card__caption">' + caption + '</span>';
+        html += '</div>';
       } else {
         html += '<div class="reel-card__placeholder-inner">Drop your MP4 in /videos/</div>';
       }
-      html += '<div class="reel-card__overlay">';
-      if (brand) html += '<span class="reel-card__brand">' + brand + '</span>';
-      if (caption) html += '<span class="reel-card__caption">' + caption + '</span>';
-      html += '</div>';
       html += '</div>';
     });
 
     carousel.innerHTML = html;
 
-    // Hover autoplay (desktop) + tap-to-play (mobile)
+    if (hasInstagram) {
+      scheduleInstagramEmbeds();
+    }
+
+    // Hover autoplay / tap-to-play for MP4 cards
     if (!prefersReducedMotion) {
-      carousel.querySelectorAll('.reel-card').forEach(function (card) {
+      carousel.querySelectorAll('.reel-card:not(.reel-card--instagram)').forEach(function (card) {
         var video = card.querySelector('video');
         if (!video) return;
 

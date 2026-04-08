@@ -194,6 +194,7 @@ collections:
             label_singular: "Reel"
             summary: "{{fields.brand}} — {{fields.caption}}"
             fields:
-              - { label: "Video file (MP4 from /videos/)", name: "video", widget: "string", hint: "e.g. videos/reel-1.mp4" }
-              - { label: "Brand name", name: "brand", widget: "string" }
-              - { label: "Caption", name: "caption", widget: "string" }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false, hint: "Paste your reel link, e.g. https://www.instagram.com/reel/ABC123/ — use this OR the MP4 below, not both" }
+              - { label: "Video file (MP4 — leave blank if using Instagram URL)", name: "video", widget: "string", required: false, hint: "e.g. videos/reel-1.mp4" }
+              - { label: "Brand name (MP4 cards only)", name: "brand", widget: "string", required: false }
+              - { label: "Caption (MP4 cards only)", name: "caption", widget: "string", required: false }
