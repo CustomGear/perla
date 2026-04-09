@@ -7,7 +7,7 @@
 
   var CONTACT = {
     name: 'Perla Desjardins',
-    email: 'collabs@perladesjardins.com',
+    email: 'perla.desjardins@outlook.com',
     instagram: 'https://www.instagram.com/perla.desjardins/',
     instagramHandle: '@perla.desjardins',
     location: 'Ottawa, ON',
